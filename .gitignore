@@ -1,0 +1,13 @@
+node_modules/
+www/
+
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+play-store/release/
+
+*.jks
+*.keystore
+keystore.properties
+.DS_Store

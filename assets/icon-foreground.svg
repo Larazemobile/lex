@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="globe" cx="35%" cy="28%" r="76%"><stop offset="0" stop-color="#eadcff"/><stop offset="0.45" stop-color="#9b6fea"/><stop offset="1" stop-color="#5b35b5"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#252844" flood-opacity="0.26"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="512" cy="492" r="240" fill="url(#globe)" stroke="#252844" stroke-width="30"/>
+    <path d="M376 393c53-42 105-29 127 10 18 33-14 65-59 69-54 5-104-28-68-79Z" fill="#ff91bd" stroke="#d95892" stroke-width="13"/>
+    <path d="M552 524c77-13 124 22 118 81-4 53-59 93-115 60-47-27-58-114-3-141Z" fill="#ff91bd" stroke="#d95892" stroke-width="13"/>
+    <ellipse cx="423" cy="366" rx="94" ry="50" fill="#fff" opacity=".34" transform="rotate(-22 423 366)"/>
+  </g>
+</svg>

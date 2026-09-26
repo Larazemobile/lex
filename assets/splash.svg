@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2732 2732">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b7de8"/><stop offset="0.52" stop-color="#c8a7f3"/><stop offset="1" stop-color="#f3b6d3"/></linearGradient>
+    <radialGradient id="globe" cx="35%" cy="28%" r="76%"><stop offset="0" stop-color="#eadcff"/><stop offset="0.45" stop-color="#9b6fea"/><stop offset="1" stop-color="#5b35b5"/></radialGradient>
+  </defs>
+  <rect width="2732" height="2732" fill="url(#bg)"/><circle cx="520" cy="490" r="220" fill="#fff" opacity=".12"/><circle cx="2260" cy="650" r="135" fill="#ffd6e8" opacity=".44"/>
+  <g><circle cx="1366" cy="1190" r="560" fill="url(#globe)" stroke="#252844" stroke-width="62"/><path d="M1044 965c126-96 248-66 298 26 42 78-34 151-140 163-126 13-244-68-158-189Z" fill="#ff91bd" stroke="#d95892" stroke-width="28"/><path d="M1460 1268c184-32 295 52 281 190-11 126-140 220-275 144-111-64-137-271-6-334Z" fill="#ff91bd" stroke="#d95892" stroke-width="28"/><path d="M999 1397c96-38 182 11 199 105 15 89-88 134-182 88-79-39-101-160-17-193Z" fill="#ff91bd" stroke="#d95892" stroke-width="28"/><ellipse cx="1155" cy="902" rx="220" ry="118" fill="#fff" opacity=".34" transform="rotate(-22 1155 902)"/></g>
+  <text x="1366" y="2010" text-anchor="middle" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-weight="900" font-size="300" fill="#252844">Le<tspan fill="#ffcf3f">x</tspan></text>
+  <text x="1366" y="2180" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="72" fill="#493879">Lectura, palabras y ortografía</text>
+</svg>

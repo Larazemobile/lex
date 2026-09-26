@@ -1,0 +1,14 @@
+{
+  "appId": "com.orbitakidx.lex",
+  "appName": "Lex",
+  "webDir": "www",
+  "backgroundColor": "#8d6be8",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "backgroundColor": "#8d6be8"
+  }
+}
