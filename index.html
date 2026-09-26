@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Lex — ÓrbitaKidx</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='20' fill='%233aa0ff' stroke='%2315172a' stroke-width='3'/><circle cx='17' cy='17' r='6' fill='%2346c66e'/><circle cx='31' cy='29' r='7' fill='%2346c66e'/><circle cx='17' cy='32' r='4' fill='%2346c66e'/><ellipse cx='17' cy='15' rx='5' ry='3' fill='%23ffffff' opacity='0.5'/></svg>">
-<meta name="theme-color" content="#8fc1ff">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#8d6be8">
 <meta name="apple-mobile-web-app-title" content="Lex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,7 +38,7 @@
 html,body{height:100%;}
 body{
   margin:0; font-family:var(--body); font-weight:500; color:var(--ink);
-  background: linear-gradient(170deg, #8fc1ff 0%, #aec2ff 45%, #d6c9f6 100%);
+  background:linear-gradient(165deg,#9b7de8 0%,#c8a7f3 48%,#f3b6d3 100%);
   background-attachment:fixed;
   min-height:100%;
   -webkit-font-smoothing:antialiased;
@@ -175,6 +178,8 @@ body{
 
 .feedback{min-height:26px; margin:10px 0 4px; font-weight:900; font-size:16px;}
 .feedback.ok{color:var(--green-d);} .feedback.no{color:var(--red-d);}
+.feedback-tip{max-width:520px; margin:8px auto 0; padding:9px 12px; border:2px solid #c9b6f4; border-radius:10px; background:#f6f0ff; color:#493879; font-size:14px; font-weight:700; line-height:1.35;}
+.skill-tag{display:inline-flex; align-items:center; gap:5px; margin:0 auto 8px; padding:5px 10px; border:2px solid #b69aef; border-radius:999px; background:#f4edff; color:#5b3da8; font-size:12px; font-weight:800;}
 
 /* keypad */
 .keypad{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:340px; margin:6px auto 2px;}
@@ -307,10 +312,10 @@ h2.wtitle b{color:var(--gold);}
   <div class="topbar">
     <div class="logo" onclick="goHome()">
       <svg class="cube" viewBox="0 0 48 48">
-        <defs><radialGradient id="globeLogo" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#a9e4ff"/><stop offset="45%" stop-color="#3aa0ff"/><stop offset="100%" stop-color="#1f56c8"/></radialGradient></defs>
+        <defs><radialGradient id="globeLogo" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#eadcff"/><stop offset="45%" stop-color="#9b6fea"/><stop offset="100%" stop-color="#5b35b5"/></radialGradient></defs>
         <circle cx="24" cy="24" r="20" fill="url(#globeLogo)" stroke="#15172a" stroke-width="3"/>
-        <path d="M13 16 q4 -3 8 -1 q3 2 1 5 q-3 2 -6 1 q-4 -2 -3 -5z" fill="#46c66e" stroke="#2c9a4f" stroke-width="1"/>
-        <path d="M27 26 q6 -1 7 4 q1 4 -3 6 q-5 1 -7 -3 q-1 -4 3 -7z" fill="#46c66e" stroke="#2c9a4f" stroke-width="1"/>
+        <path d="M13 16 q4 -3 8 -1 q3 2 1 5 q-3 2 -6 1 q-4 -2 -3 -5z" fill="#ff91bd" stroke="#d95892" stroke-width="1"/>
+        <path d="M27 26 q6 -1 7 4 q1 4 -3 6 q-5 1 -7 -3 q-1 -4 3 -7z" fill="#ff91bd" stroke="#d95892" stroke-width="1"/>
         <ellipse cx="17" cy="15" rx="7" ry="4.4" fill="#ffffff" opacity="0.42" transform="rotate(-25 17 15)"/>
       </svg>
       <h1>Le<b>x</b></h1>
@@ -391,7 +396,7 @@ function sfx(type){ if(!soundOn()) return; try{ var AC=window.AudioContext||wind
   else if(type==='start'){ seq=[[392,0,.09],[523,.09,.09],[784,.18,.18]]; }
   else { seq=[[600,0,.08]]; }
   for(var i=0;i<seq.length;i++){ var n=seq[i], o=ctx.createOscillator(), g=ctx.createGain(); o.type=wave; o.frequency.value=n[0]; o.connect(g); g.connect(ctx.destination); var t0=ctx.currentTime+n[1]; g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(0.22,t0+0.012); g.gain.exponentialRampToValueAtTime(0.0001,t0+n[2]); o.start(t0); o.stop(t0+n[2]+0.03); } }catch(e){} }
-function bigGlobeSVG(){ return '<svg viewBox="0 0 48 48" style="width:100%;height:100%"><defs><radialGradient id="wg" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#a9e4ff"/><stop offset="45%" stop-color="#3aa0ff"/><stop offset="100%" stop-color="#1f56c8"/></radialGradient></defs><circle cx="24" cy="24" r="20" fill="url(#wg)" stroke="#15172a" stroke-width="3"/><path d="M13 16 q4 -3 8 -1 q3 2 1 5 q-3 2 -6 1 q-4 -2 -3 -5z" fill="#46c66e" stroke="#2c9a4f" stroke-width="1"/><path d="M27 26 q6 -1 7 4 q1 4 -3 6 q-5 1 -7 -3 q-1 -4 3 -7z" fill="#46c66e" stroke="#2c9a4f" stroke-width="1"/><ellipse cx="17" cy="15" rx="7" ry="4.4" fill="#ffffff" opacity="0.42" transform="rotate(-25 17 15)"/></svg>'; }
+function bigGlobeSVG(){ return '<svg viewBox="0 0 48 48" style="width:100%;height:100%"><defs><radialGradient id="wg" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#eadcff"/><stop offset="45%" stop-color="#9b6fea"/><stop offset="100%" stop-color="#5b35b5"/></radialGradient></defs><circle cx="24" cy="24" r="20" fill="url(#wg)" stroke="#15172a" stroke-width="3"/><path d="M13 16 q4 -3 8 -1 q3 2 1 5 q-3 2 -6 1 q-4 -2 -3 -5z" fill="#ff91bd" stroke="#d95892" stroke-width="1"/><path d="M27 26 q6 -1 7 4 q1 4 -3 6 q-5 1 -7 -3 q-1 -4 3 -7z" fill="#ff91bd" stroke="#d95892" stroke-width="1"/><ellipse cx="17" cy="15" rx="7" ry="4.4" fill="#ffffff" opacity="0.42" transform="rotate(-25 17 15)"/></svg>'; }
 
 /* medallas */
 var ACHIEVEMENTS=[
@@ -611,6 +616,62 @@ var LEC=[
    {q:'¿Cuánto se tardaría en recorrerla a pie?',opts:['Un día','Meses','Una hora'],a:1},
    {q:'¿Qué ocurre hoy con ella?',opts:['La visitan millones de personas','Está cerrada','Desapareció'],a:0} ]}
 ];
+
+/* Una pregunta de pensamiento por texto: evita que leer sea solo copiar datos. */
+var LEC_UPGRADES={
+ 'El gato Min':{skill:'Inferencia',q:'Si Min busca un lugar calentito para descansar, ¿dónde es más probable encontrarlo?',opts:['Al sol','Dentro del agua','En la nevera'],a:0,why:'El texto dice que le gusta dormir al sol; podemos deducir que allí está calentito.'},
+ 'La merienda':{skill:'Orden temporal',q:'¿Qué ocurre primero en la historia?',opts:['Lucía hace los deberes','Lucía llega del colegio','Lucía termina de cenar'],a:1,why:'Primero llega del colegio, después merienda y al final hace los deberes.'},
+ 'El perro Toby':{skill:'Inferencia',q:'¿Qué detalle indica que Toby está contento?',opts:['Mueve la cola','Es marrón','Va cada tarde'],a:0,why:'Los perros suelen mover la cola cuando están contentos o emocionados.'},
+ 'La lluvia':{skill:'Causa y efecto',q:'¿Por qué María se puso botas de agua y chubasquero?',opts:['Para no mojarse','Para tener más calor en verano','Para ir a una fiesta'],a:0,why:'Como estaba lloviendo, esa ropa la protegía del agua.'},
+ 'El cumpleaños':{skill:'Idea principal',q:'¿Qué está preparando la familia de Leo?',opts:['Una celebración','Un viaje','Una clase'],a:0,why:'La tarta y la llegada de sus amigos son pistas de una celebración.'},
+ 'El huerto':{skill:'Causa y efecto',q:'¿Para qué riega el abuelo las plantas?',opts:['Para ayudarlas a crecer','Para cambiarles el color','Para recoger la tierra'],a:0,why:'Las plantas necesitan agua para crecer.'},
+ 'La playa':{skill:'Clasificar',q:'¿Qué actividad del texto se hace fuera del agua?',opts:['Recoger conchas','Nadar','Bucear'],a:0,why:'Adrián recoge las conchas en la arena.'},
+ 'El globo rojo':{skill:'Causa y efecto',q:'¿Qué hizo que el globo cambiara de lugar?',opts:['Una ráfaga de viento','Una nube','El color rojo'],a:0,why:'La ráfaga de viento se lo llevó hacia las nubes.'},
+ 'Las galletas':{skill:'Orden temporal',q:'¿Qué hicieron justo antes de meter las galletas al horno?',opts:['Mezclar los ingredientes','Comerlas','Guardar la harina'],a:0,why:'Primero mezclaron harina, azúcar y huevo; después usaron el horno.'},
+ 'El nido':{skill:'Orden temporal',q:'¿Qué ocurrió antes de que nacieran los polluelos?',opts:['Los huevos se abrieron','Los polluelos volaron','El nido cayó'],a:0,why:'Los polluelos nacieron cuando se abrieron los huevos.'},
+ 'La nieve':{skill:'Inferencia',q:'¿Por qué los niños llevaban guantes y bufanda?',opts:['Porque hacía frío','Porque iban a nadar','Porque era de noche'],a:0,why:'La nieve es una pista de que hacía frío.'},
+ 'El mercado':{skill:'Inferencia',q:'¿Qué fruta comerá probablemente Iván de postre?',opts:['Manzanas','Peras','Fresas'],a:0,why:'El texto dice que Iván elige manzanas para el postre.'},
+ 'El semáforo':{skill:'Pensamiento seguro',q:'¿Por qué Ana mira a los dos lados aunque el semáforo esté verde?',opts:['Para comprobar que puede cruzar segura','Para buscar una tienda','Para saber la hora'],a:0,why:'Mirar a ambos lados permite comprobar que ningún vehículo se acerca.'},
+ 'El tren de juguete':{skill:'Inferencia',q:'¿Qué muestra el perro al seguir el tren moviendo la cola?',opts:['Que le divierte','Que le da miedo','Que quiere dormir'],a:0,why:'Seguirlo y mover la cola son pistas de que el juego le interesa.'},
+ 'La sopa':{skill:'Causa y efecto',q:'¿Por qué apetecía una sopa caliente?',opts:['Porque hacía mucho frío','Porque era verano','Porque Julia no cenaba'],a:0,why:'Una comida caliente ayuda a entrar en calor cuando fuera hace frío.'},
+ 'El arcoíris':{skill:'Causa y efecto',q:'¿Qué dos cosas ocurrieron antes de aparecer el arcoíris?',opts:['Llovió y salió el sol','Nevó y anocheció','Sopló el viento y hubo niebla'],a:0,why:'El texto cuenta que primero llovió y después salió el sol.'},
+
+ 'El parque':{skill:'Orden temporal',q:'¿Qué hicieron justo antes de volver a casa?',opts:['Compraron un helado','Dieron pan a los patos','Llegaron al parque'],a:0,why:'El texto usa «antes de volver a casa» para señalar la última acción.'},
+ 'Una carta':{skill:'Inferencia',q:'¿Por qué se puso contenta Marta?',opts:['Porque podría pasar el verano con Sara','Porque perdió la carta','Porque cerraron la granja'],a:0,why:'La invitación de su prima le permite pasar tiempo con ella en verano.'},
+ 'El recreo':{skill:'Causa y efecto',q:'¿Por qué dejaron de jugar?',opts:['Porque sonó el timbre','Porque Inés ganó','Porque empezó a llover'],a:0,why:'El timbre señaló que el recreo había terminado.'},
+ 'El museo':{skill:'Idea principal',q:'¿Qué título alternativo resume mejor el texto?',opts:['Una visita llena de ciencia','Una tarde de compras','El partido de Marcos'],a:0,why:'Dinosaurios, planetario y meteorito pertenecen a una visita científica.'},
+ 'La tormenta':{skill:'Propósito',q:'¿Para qué contaba Nico los segundos?',opts:['Para calcular si la tormenta estaba cerca','Para saber cuántas nubes había','Para que dejara de llover'],a:0,why:'El tiempo entre rayo y trueno le daba una pista sobre la distancia.'},
+ 'La bicicleta nueva':{skill:'Causa y efecto',q:'¿Qué ayudó a Elena a montar sola?',opts:['Practicar todo el fin de semana','El color rojo de la bici','El timbre plateado'],a:0,why:'La práctica hizo que aprendiera a controlar la bicicleta.'},
+ 'El concurso de dibujo':{skill:'Inferencia',q:'¿Qué indica que la profesora valoró el dibujo de Lucas?',opts:['Lo expuso en la entrada','Lo escondió','Le pidió que lo borrara'],a:0,why:'Exponerlo para que todos lo vieran demuestra que consideró valioso el trabajo.'},
+ 'La excursión al campo':{skill:'Propósito',q:'¿Para qué llevaban un cuaderno?',opts:['Para registrar sus descubrimientos','Para tapar las hormigas','Para dibujar el autobús'],a:0,why:'Apuntar lo encontrado permite recordarlo y estudiarlo después.'},
+ 'El gato perdido':{skill:'Vocabulario en contexto',q:'Pelusa estaba «hecho una bola». ¿Qué significa?',opts:['Acurrucado','Jugando con una pelota','Escondido fuera de casa'],a:0,why:'«Hecho una bola» describe a un animal encogido y acurrucado.'},
+ 'La obra de teatro':{skill:'Inferencia',q:'¿Qué podemos deducir de los aplausos?',opts:['Al público le gustó la obra','Los padres querían irse','Nerea olvidó el disfraz'],a:0,why:'Aplaudir con fuerza al terminar suele expresar que algo ha gustado.'},
+ 'El partido de fútbol':{skill:'Deducción',q:'Si perdían por un gol y Daniel marcó dos, ¿cómo terminó su equipo?',opts:['Ganando por un gol','Perdiendo por dos','Empatado'],a:0,why:'Dos goles superan la desventaja de un gol: quedaron uno por delante.'},
+ 'La receta de la abuela':{skill:'Orden temporal',q:'¿Qué paso va entre hacer la masa y rebozarla?',opts:['Dejarla enfriar','Freírla primero','Guardar el cuaderno'],a:0,why:'La receta sigue este orden: masa, enfriar, rebozar y freír.'},
+ 'La feria':{skill:'Inferencia',q:'¿Qué atracción debía estar a cierta altura?',opts:['La noria','Los coches de choque','El algodón de azúcar'],a:0,why:'Desde la noria se veían todas las casas, así que estaba elevada.'},
+ 'El acuario':{skill:'Causa y efecto',q:'¿Para qué cambian de color los pulpos?',opts:['Para esconderse','Para respirar fuera del agua','Para llamar a la guía'],a:0,why:'Cambiar de color les ayuda a camuflarse de sus enemigos.'},
+ 'El experimento':{skill:'Comparación',q:'¿Por qué el experimento parecía un volcán real?',opts:['La espuma se parecía a la lava','El cartón estaba frío','Todo ocurrió bajo el agua'],a:0,why:'La espuma salía como si fuera lava durante una erupción.'},
+ 'La carrera':{skill:'Inferencia',q:'¿Por qué Mateo se sintió orgulloso aunque no quedó primero?',opts:['Su esfuerzo tuvo resultado y ganó una medalla','No participó en la carrera','Su hermano corrió por él'],a:0,why:'Entrenó durante días, terminó tercero y recibió una medalla.'},
+
+ 'El faro':{skill:'Idea principal',q:'¿Cuál es la idea más importante del texto?',opts:['La luz del faro protege a los barcos','Don Tomás vive en un barco','Las rocas iluminan la costa'],a:0,why:'La función central del faro es advertir del peligro y evitar accidentes.'},
+ 'La biblioteca':{skill:'Inferencia',q:'¿Qué hábito adquirió Daniela?',opts:['Ir a leer y buscar libros cada semana','Comprar tres libros al día','Trabajar como bibliotecaria'],a:0,why:'«Desde entonces, Daniela va cada semana» muestra que creó un hábito lector.'},
+ 'El naufragio':{skill:'Causa y efecto',q:'¿Por qué llamaron prudente al capitán?',opts:['Porque esperó a que pasara el peligro','Porque navegó más rápido','Porque abandonó la carga'],a:0,why:'En vez de arriesgarse, echó el ancla y esperó a que el mar se calmara.'},
+ 'Las abejas':{skill:'Deducción',q:'Según el texto, si hubiera muchas menos abejas, ¿qué podría ocurrir?',opts:['Algunas plantas darían menos frutos','Todas las flores crecerían más','El polen desaparecería del suelo'],a:0,why:'Las abejas transportan polen y ayudan a que muchas plantas produzcan frutos.'},
+ 'El inventor':{skill:'Mensaje del texto',q:'¿Qué enseñanza transmite la historia?',opts:['Crear y aprender también importa aunque no ganes','Solo merece la pena quedar primero','Las piezas viejas nunca sirven'],a:0,why:'El jurado valoró su imaginación y sus ganas de aprender, aunque no ganó.'},
+ 'El viaje en tren':{skill:'Propósito',q:'¿Para qué apuntaba Clara lo que veía?',opts:['Para usarlo después en un relato','Para no mirar por la ventana','Para enseñárselo al revisor'],a:0,why:'Sus notas le servirían para escribir el relato al llegar.'},
+ 'El desierto':{skill:'Idea principal',q:'¿Qué tienen en común animales y cactus?',opts:['Se adaptan para sobrevivir con calor y poca agua','Salen todos durante el día','Guardan alimento bajo las rocas'],a:0,why:'Los animales evitan el calor y los cactus almacenan agua: ambos se adaptan.'},
+ 'La imprenta':{skill:'Causa y efecto',q:'¿Qué consecuencia tuvo poder hacer libros más rápido?',opts:['Más personas pudieron acceder a ellos','Los libros dejaron de tener texto','Ya nadie aprendió a leer'],a:0,why:'Al producir muchas copias, los libros pudieron llegar a mucha más gente.'},
+ 'El volcán':{skill:'Orden causal',q:'¿Qué sucede justo antes de que el magma salga al exterior?',opts:['Aumenta mucho la presión','La roca se enfría','Se forman nuevas tierras'],a:0,why:'La presión hace subir el magma y provoca la erupción.'},
+ 'La migración de las aves':{skill:'Causa y efecto',q:'¿Qué ventaja tiene turnarse para ir delante?',opts:['El grupo se cansa menos','Llegan siempre de noche','No necesitan orientarse'],a:0,why:'La posición delantera exige más esfuerzo; al turnarse lo reparten.'},
+ 'El reloj de la torre':{skill:'Inferencia',q:'¿Qué ocurriría si el relojero dejara de subir?',opts:['El reloj podría pararse','Las campanas sonarían más fuerte','La torre cambiaría de lugar'],a:0,why:'El relojero le daba cuerda cada semana para mantenerlo funcionando.'},
+ 'El astrónomo':{skill:'Idea principal',q:'¿Cómo ayudaron las observaciones de Galileo?',opts:['Permitieron corregir ideas antiguas sobre el universo','Demostraron que no existía Júpiter','Hicieron desaparecer las montañas de la Luna'],a:0,why:'Sus descubrimientos mostraron que la Tierra no era el centro de todo.'},
+ 'Los castores':{skill:'Propósito',q:'¿Por qué la entrada de la madriguera está bajo el agua?',opts:['Dificulta que entren los depredadores','Permite que crezcan hojas dentro','Hace que la presa sea más alta'],a:0,why:'La entrada sumergida funciona como protección.'},
+ 'Las estaciones':{skill:'Aplicar lo aprendido',q:'Si una zona recibe los rayos solares más directos, ¿qué estación será allí?',opts:['Verano','Invierno','Otoño'],a:0,why:'Los rayos más directos calientan más esa parte del planeta.'},
+ 'El reciclaje':{skill:'Idea principal',q:'¿Qué mensaje quiere transmitir el texto?',opts:['Separar residuos ayuda al planeta y es responsabilidad de todos','Toda la basura debe mezclarse','Reciclar solo sirve para ahorrar espacio en casa'],a:0,why:'El texto relaciona reciclaje, ahorro de energía y cuidado de la naturaleza.'},
+ 'La Gran Muralla':{skill:'Deducción',q:'¿Qué dato demuestra mejor que la muralla es enorme?',opts:['Recorrerla a pie llevaría meses','Se construyó hace siglos','La visitan turistas'],a:0,why:'Necesitar meses para recorrerla permite imaginar su gran longitud.'}
+};
+for(var li=0;li<LEC.length;li++){ if(LEC_UPGRADES[LEC[li].title]) LEC[li].qs.push(LEC_UPGRADES[LEC[li].title]); }
+
 var VOC=[
  {lvl:'facil', q:'"Contento" significa...', opts:['Triste','Alegre','Cansado'], a:1},
  {lvl:'facil', q:'"Veloz" significa...', opts:['Rápido','Lento','Grande'], a:0},
@@ -703,6 +764,43 @@ var VOC=[
  {lvl:'dificil', q:'"Hábil" significa...', opts:['Que hace algo muy bien','Torpe','Lento'], a:0},
  {lvl:'dificil', q:'"Próspero" significa...', opts:['Que va bien y crece','Que va mal','Pobre'], a:0}
 ];
+
+/* Palabras dentro de frases: comprenderlas es más útil que memorizarlas aisladas. */
+var VOC_CONTEXT=[
+ {lvl:'facil',context:true,q:'«El conejo fue veloz y llegó enseguida». ¿Qué significa «veloz»?',opts:['Rápido','Ruidoso','Pequeño'],a:0,why:'La pista «llegó enseguida» indica que fue rápido.'},
+ {lvl:'facil',context:true,q:'«Leo estaba agotado después de correr». ¿Cómo estaba?',opts:['Muy cansado','Muy enfadado','Muy limpio'],a:0,why:'«Agotado» significa que casi no le queda energía.'},
+ {lvl:'facil',context:true,q:'«La habitación quedó ordenada». ¿Cómo quedó?',opts:['Cada cosa en su sitio','Llena de agua','Con la luz apagada'],a:0,why:'Algo ordenado tiene cada cosa colocada en su lugar.'},
+ {lvl:'facil',context:true,q:'«El cachorro es diminuto». ¿Cómo es?',opts:['Muy pequeño','Muy veloz','Muy viejo'],a:0,why:'«Diminuto» significa muy pequeño.'},
+ {lvl:'facil',context:true,q:'«Marta habló en voz baja para no despertar al bebé». ¿Cómo habló?',opts:['Suavemente','A gritos','Cantando'],a:0,why:'Hablar en voz baja es hablar suavemente.'},
+ {lvl:'facil',context:true,q:'«El camino estaba vacío». ¿Qué quiere decir?',opts:['No había nadie','Era muy ancho','Estaba mojado'],a:0,why:'Un lugar vacío no contiene personas ni cosas.'},
+ {lvl:'facil',context:true,q:'«El cristal es transparente». ¿Qué permite hacer?',opts:['Ver a través de él','Doblarlo fácilmente','Oír música'],a:0,why:'Un material transparente deja pasar la luz y permite ver a través.'},
+ {lvl:'facil',context:true,q:'«Nora estaba asombrada con el truco». ¿Cómo se sentía?',opts:['Sorprendida','Aburrida','Hambrienta'],a:0,why:'«Asombrada» significa sorprendida.'},
+ {lvl:'facil',context:true,q:'«El lago estaba tranquilo». ¿Cómo estaba el agua?',opts:['En calma','Hirviendo','Llena de espuma'],a:0,why:'«Tranquilo» indica calma y poco movimiento.'},
+ {lvl:'facil',context:true,q:'«El pan estaba tierno». ¿Cómo estaba?',opts:['Blando y fácil de comer','Duro como una piedra','Congelado'],a:0,why:'Un alimento tierno es blando y se mastica con facilidad.'},
+
+ {lvl:'medio',context:true,q:'«Guardó la llave en un lugar oculto». ¿Dónde la dejó?',opts:['Escondida','A la vista','En movimiento'],a:0,why:'«Oculto» significa escondido o difícil de ver.'},
+ {lvl:'medio',context:true,q:'«La visita de su abuela es frecuente». ¿Qué significa?',opts:['Ocurre a menudo','Nunca ocurre','Ocurrió una sola vez'],a:0,why:'Algo frecuente se repite muchas veces.'},
+ {lvl:'medio',context:true,q:'«La copa es frágil». ¿Qué cuidado necesita?',opts:['Evitar golpes porque se rompe fácilmente','Mojarla para que pese más','Dejarla caer para probarla'],a:0,why:'«Frágil» describe algo que se rompe con facilidad.'},
+ {lvl:'medio',context:true,q:'«El sendero era estrecho». ¿Cómo era?',opts:['Tenía poca anchura','Era muy luminoso','Estaba lleno de gente'],a:0,why:'«Estrecho» es lo contrario de ancho.'},
+ {lvl:'medio',context:true,q:'«La foto salió nítida». ¿Cómo se veía?',opts:['Clara y definida','Borrada','Muy oscura'],a:0,why:'Una imagen nítida se distingue con claridad.'},
+ {lvl:'medio',context:true,q:'«Claudia fue cautelosa al cruzar». ¿Cómo actuó?',opts:['Con cuidado','Sin mirar','Con mucha prisa'],a:0,why:'Ser cauteloso es actuar con atención para evitar riesgos.'},
+ {lvl:'medio',context:true,q:'«El público permaneció inmóvil». ¿Qué hizo?',opts:['No se movió','Salió corriendo','Empezó a bailar'],a:0,why:'«Inmóvil» significa que no se mueve.'},
+ {lvl:'medio',context:true,q:'«Tomás dio una respuesta sincera». ¿Cómo respondió?',opts:['Diciendo lo que de verdad pensaba','Inventando una mentira','Sin escuchar'],a:0,why:'Una respuesta sincera expresa la verdad.'},
+ {lvl:'medio',context:true,q:'«El equipo logró una amplia ventaja». ¿Qué consiguió?',opts:['Quedar bastante por delante','Empatar','Perder por poco'],a:0,why:'Una ventaja amplia es una diferencia grande a favor.'},
+ {lvl:'medio',context:true,q:'«La científica observó el insecto con curiosidad». ¿Qué quería?',opts:['Saber más sobre él','Alejarlo sin mirarlo','Dormirse'],a:0,why:'La curiosidad impulsa a preguntar, observar y aprender.'},
+
+ {lvl:'dificil',context:true,q:'«Su alegría fue efímera: duró apenas un minuto». ¿Qué significa «efímera»?',opts:['Que dura poco','Que no empieza','Que dura para siempre'],a:0,why:'La propia frase da la pista: apenas duró un minuto.'},
+ {lvl:'dificil',context:true,q:'«El explorador avanzó por un terreno hostil». ¿Cómo era el lugar?',opts:['Difícil y poco favorable','Cómodo y acogedor','Perfecto para descansar'],a:0,why:'Un entorno hostil presenta dificultades o peligros.'},
+ {lvl:'dificil',context:true,q:'«El lobo devoró la comida con apetito voraz». ¿Cómo comió?',opts:['Con muchísima ansia','Sin hambre','Muy lentamente y sin ganas'],a:0,why:'«Voraz» expresa un hambre o deseo de comer muy intenso.'},
+ {lvl:'dificil',context:true,q:'«A pesar de fallar, fue tenaz y siguió intentándolo». ¿Cómo actuó?',opts:['Sin rendirse','Con indiferencia','Abandonando enseguida'],a:0,why:'La pista «siguió intentándolo» define la tenacidad.'},
+ {lvl:'dificil',context:true,q:'«Desde la cima se veía un cielo diáfano». ¿Cómo estaba?',opts:['Claro y despejado','Lleno de humo','Completamente negro'],a:0,why:'«Diáfano» puede significar claro, limpio o fácil de ver a través.'},
+ {lvl:'dificil',context:true,q:'«La respuesta fue escueta». ¿Cómo fue?',opts:['Breve y directa','Muy larga y repetitiva','Imposible de oír'],a:0,why:'«Escueto» significa breve, sin detalles innecesarios.'},
+ {lvl:'dificil',context:true,q:'«El negocio se volvió próspero». ¿Qué ocurrió?',opts:['Empezó a ir bien y crecer','Cerró inmediatamente','Dejó de tener clientes'],a:0,why:'Algo próspero progresa y obtiene buenos resultados.'},
+ {lvl:'dificil',context:true,q:'«La cantidad de agua menguó durante el verano». ¿Qué pasó?',opts:['Disminuyó','Aumentó mucho','No cambió'],a:0,why:'«Menguar» significa disminuir o hacerse menor.'},
+ {lvl:'dificil',context:true,q:'«La artesana era diestra con las manos». ¿Cómo trabajaba?',opts:['Con habilidad','Con torpeza','Sin prestar atención'],a:0,why:'«Diestro» también significa hábil al realizar una tarea.'},
+ {lvl:'dificil',context:true,q:'«El mar estaba sosegado al amanecer». ¿Cómo estaba?',opts:['Tranquilo','Violento','Congelado'],a:0,why:'«Sosegado» significa calmado o tranquilo.'}
+];
+
 var ORT=[
  {lvl:'facil', q:'¿Cómo se escribe?', opts:['vaca','baca'], a:0},
  {lvl:'facil', q:'Completa: "el ___uevo"', opts:['huevo','uevo'], a:0},
@@ -810,9 +908,9 @@ function renderHome(){ var s=DATA.stats, medals=unlockedCount();
   var html='<div class="hero block"><div class="big-av">'+avatarSVG(DATA.avatar)+'</div><div class="htxt"><h2>¡Hola, '+escapeHtml(DATA.name||"jugador")+'!</h2><p>¿Listo para leer y aprender hoy? Elige un mundo.</p>'
    +'<div class="stat-row"><div class="stat">✅ <b>'+s.totalCorrect+'</b> aciertos</div><div class="stat">🔥 mejor racha <b>'+s.bestStreak+'</b></div><div class="stat">🏅 <b>'+medals+'</b>/'+ACHIEVEMENTS.length+' medallas</div></div></div><div class="today-hearts" title="Partidas jugadas hoy"><span class="th-lbl">Hoy</span>'+heartsHTML()+'</div></div>'
    +'<div class="section-title">ELIGE TU MUNDO</div><div class="grid">'
-   +modeCard("var(--purple)","book","Comprensión","Lee y responde","selLec()")
-   +modeCard("var(--green)","abc","Vocabulario","¿Qué significa?","selVoc()")
-   +modeCard("var(--orange)","pencil","Ortografía","Escribe sin faltas","selOrt()")
+   +modeCard("var(--purple)","book","Comprensión","Entiende, deduce y ordena","selLec()")
+   +modeCard("var(--green)","abc","Vocabulario","Aprende palabras con frases","selVoc()")
+   +modeCard("var(--orange)","pencil","Ortografía","Descubre la regla","selOrt()")
    +modeCard("var(--gold)","target","Examen","Pon a prueba lo aprendido","selExam()")
    +modeCard("var(--teal)","star","Medallas","Mira tus logros","renderMedallas()")
    +modeCard("var(--blue)","trophy","Progreso","Tu mapa de estrellas","renderProgress()")
@@ -824,9 +922,9 @@ function diffPanel(mode,title,descs){ var keys=["facil","medio","dificil"],label
   for(var i=0;i<3;i++){ var st=DATA.stars[mode][keys[i]]||0; html+='<div class="pill '+cls[i]+'" onclick="startQuiz(\''+mode+'\',\''+keys[i]+'\',\''+title+' · '+labels[i]+'\',false)"><div class="pl">'+labels[i]+'</div><div class="pd">'+descs[i]+'</div><div class="st">'+starStr(st)+'</div></div>'; }
   html+='</div></div>'; $("screen").innerHTML=html; window.scrollTo(0,0);
 }
-function selLec(){ diffPanel("lec","Comprensión lectora",["Textos cortitos","Textos medianos","Textos más largos"]); }
-function selVoc(){ diffPanel("voc","Vocabulario",["Palabras fáciles","Un poco más","Palabras difíciles"]); }
-function selOrt(){ diffPanel("ort","Ortografía",["b/v, h…","tildes, ll/y…","palabras difíciles"]); }
+function selLec(){ diffPanel("lec","Comprensión lectora",["Pistas y orden","Causas e inferencias","Ideas y deducciones"]); }
+function selVoc(){ diffPanel("voc","Vocabulario",["Palabras en frases","Sinónimos y contexto","Matices y palabras nuevas"]); }
+function selOrt(){ diffPanel("ort","Ortografía",["b/v y h","tildes, ll/y y sonidos","Reglas y palabras reto"]); }
 var examSel={diff:"medio"};
 function selExam(){ var html=backBar("Examen")+'<div class="panel block"><h2>Prepara tu examen</h2><p class="sub">10 preguntas mezcladas. ¡Saca 10/10 para una medalla!</p><div style="font-weight:900;margin:6px 0 8px">Dificultad</div><div class="choose-row" id="exd">'
    +'<div class="chip" data-d="facil" onclick="examSel.diff=\'facil\';upEx()">Fácil</div><div class="chip" data-d="medio" onclick="examSel.diff=\'medio\';upEx()">Medio</div><div class="chip" data-d="dificil" onclick="examSel.diff=\'dificil\';upEx()">Difícil</div></div>'
@@ -837,48 +935,66 @@ function upEx(){ var c=document.querySelectorAll('#exd .chip'); for(var i=0;i<c.
 function startExam(){ var dl={facil:"Fácil",medio:"Medio",dificil:"Difícil"}; startQuiz("exam",examSel.diff,"Examen · "+dl[examSel.diff],true); }
 
 function buildItems(mode,level,n,isExam){ var items=[];
-  function fromLec(lv){ var out=[]; for(var i=0;i<LEC.length;i++){ if(LEC[i].lvl===lv){ for(var j=0;j<LEC[i].qs.length;j++){ var qq=LEC[i].qs[j]; out.push({ctx:LEC[i].title+"|"+LEC[i].text, q:qq.q, opts:qq.opts.slice(), a:qq.a}); } } } return out; }
-  function fromList(L,lv){ var out=[]; for(var i=0;i<L.length;i++){ if(L[i].lvl===lv) out.push({q:L[i].q, opts:L[i].opts.slice(), a:L[i].a}); } return out; }
-  if(isExam){ items=items.concat(fromLec(level), fromList(VOC,level), fromList(ORT,level)); shuffle(items); items=items.slice(0,n); }
+  function copyQ(q,ctx,kind){ return {ctx:ctx||"",q:q.q,opts:q.opts.slice(),a:q.a,skill:q.skill||"",why:q.why||"",context:!!q.context,kind:kind||""}; }
+  function fromLec(lv){ var out=[]; for(var i=0;i<LEC.length;i++){ if(LEC[i].lvl===lv){ for(var j=0;j<LEC[i].qs.length;j++) out.push(copyQ(LEC[i].qs[j],LEC[i].title+"|"+LEC[i].text,'lec')); } } return out; }
+  function fromList(L,lv,kind){ var out=[]; for(var i=0;i<L.length;i++){ if(L[i].lvl===lv) out.push(copyQ(L[i],"",kind)); } return out; }
+  if(isExam){ items=items.concat(fromLec(level),fromList(VOC,level,'voc'),fromList(VOC_CONTEXT,level,'voc'),fromList(ORT,level,'ort')); shuffle(items); items=items.slice(0,n); }
   else if(mode==='lec'){
     var texts=[]; for(var ti=0;ti<LEC.length;ti++){ if(LEC[ti].lvl===level) texts.push(LEC[ti]); }
     shuffle(texts);
-    for(var tj=0; tj<texts.length && items.length<n; tj++){ var T=texts[tj]; var qs=shuffle(T.qs.slice()).slice(0,2);
-      for(var qi=0; qi<qs.length; qi++){ items.push({ctx:T.title+"|"+T.text, q:qs[qi].q, opts:qs[qi].opts.slice(), a:qs[qi].a}); } }
+    for(var tj=0; tj<texts.length && items.length<n; tj++){ var T=texts[tj], thinking=[],literal=[];
+      for(var qi=0;qi<T.qs.length;qi++) (T.qs[qi].skill?thinking:literal).push(T.qs[qi]);
+      shuffle(thinking); shuffle(literal);
+      if(literal.length) items.push(copyQ(literal[0],T.title+"|"+T.text,'lec'));
+      if(thinking.length&&items.length<n) items.push(copyQ(thinking[0],T.title+"|"+T.text,'lec'));
+    }
     items=items.slice(0,n);
   }
-  else if(mode==='voc'){ items=fromList(VOC,level); shuffle(items); items=items.slice(0,n); }
-  else { items=fromList(ORT,level); shuffle(items); items=items.slice(0,n); }
+  else if(mode==='voc'){ var base=fromList(VOC,level,'voc'),context=fromList(VOC_CONTEXT,level,'voc'); shuffle(base); shuffle(context); items=context.slice(0,Math.min(5,context.length)).concat(base.slice(0,n-Math.min(5,context.length))); shuffle(items); }
+  else { items=fromList(ORT,level,'ort'); shuffle(items); items=items.slice(0,n); }
   return items;
 }
 function startQuiz(mode,level,label,isExam){ var n=10; var items=buildItems(mode,level,n,isExam);
-  QUIZ={mode:mode,level:level,label:label,isExam:!!isExam,items:items,index:0,correct:0,count:items.length,answered:false,streak:0,wrong:[]};
+  QUIZ={mode:mode,level:level,label:label,sourceLabel:label,isExam:!!isExam,reviewMode:false,items:items,index:0,correct:0,count:items.length,answered:false,streak:0,wrong:[]};
   renderQuiz(); window.scrollTo(0,0);
 }
 function renderQuiz(){ var it=QUIZ.items[QUIZ.index], pct=Math.round(QUIZ.index/QUIZ.count*100);
   var opts=''; for(var i=0;i<it.opts.length;i++){ opts+='<div class="opt-btn" id="opt'+i+'" onclick="answer('+i+')">'+escapeHtml(it.opts[i])+'</div>'; }
   var ctx=''; if(it.ctx){ var p=it.ctx.split("|"); ctx='<div class="read-box"><span class="rt">'+escapeHtml(p[0])+'</span>'+escapeHtml(p[1])+'</div>'; }
+  var skill=it.skill?'<div class="skill-tag">🧠 '+escapeHtml(it.skill)+'</div>':(it.context?'<div class="skill-tag">💬 Palabra en contexto</div>':'');
   var html='<div class="back-bar"><div class="btn ghost sm" onclick="goHome()">⟵ Salir</div><div class="streak"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ff7a00">'+iconPath("flame")+'</svg> x'+QUIZ.streak+'</div></div>'
-   +'<div class="quiz-head"><div class="qmeta">'+(QUIZ.isExam?'EXAMEN':'PRÁCTICA')+' · '+(QUIZ.index+1)+'/'+QUIZ.count+'</div><div class="qmeta">'+escapeHtml(QUIZ.label)+'</div></div>'
+   +'<div class="quiz-head"><div class="qmeta">'+(QUIZ.isExam?'EXAMEN':QUIZ.reviewMode?'REPASO':'PRÁCTICA')+' · '+(QUIZ.index+1)+'/'+QUIZ.count+'</div><div class="qmeta">'+escapeHtml(QUIZ.label)+'</div></div>'
    +'<div class="progress"><div class="bar" style="width:'+pct+'%"></div></div>'
-   +'<div class="qcard block" id="qcard">'+ctx+'<div class="q-text">'+escapeHtml(it.q)+'</div><div class="opts">'+opts+'</div><div class="feedback" id="fb"></div></div>';
+   +'<div class="qcard block" id="qcard">'+ctx+skill+'<div class="q-text">'+escapeHtml(it.q)+'</div><div class="opts">'+opts+'</div><div class="feedback" id="fb"></div></div>';
   $("screen").innerHTML=html; QUIZ.answered=false;
 }
+function stripAccents(s){ return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+function orthographyTip(it){ var good=it.opts[it.a],bad=it.opts[it.a===0?1:0],plainGood=stripAccents(good),plainBad=stripAccents(bad);
+  if(plainGood===plainBad&&good!==bad) return good===plainGood?'«'+good+'» no lleva tilde. Fíjate en dónde cae la fuerza al pronunciarla.':'«'+good+'» lleva tilde. Pronúnciala despacio y localiza la sílaba fuerte.';
+  if(good.indexOf('ü')>=0) return 'La diéresis de «'+good+'» indica que la u también se pronuncia.';
+  if(good.charAt(0)==='h'||bad===good.slice(1)) return 'La h no suena, pero forma parte de «'+good+'».';
+  if(good.indexOf('ll')>=0) return '«'+good+'» se escribe con ll. Guarda su forma completa en la memoria visual.';
+  if(good.indexOf('qu')>=0) return 'En «'+good+'», qu representa el sonido /k/ delante de e o i.';
+  if(good.indexOf('gu')>=0) return 'En «'+good+'», la u ayuda a conservar el sonido suave de la g.';
+  if(good.indexOf('x')>=0) return '«'+good+'» se escribe con x. Fíjate en el grupo completo de letras.';
+  return 'La forma correcta es «'+good+'». Obsérvala, tápala e intenta escribirla de memoria.';
+}
+function feedbackWhy(it){ if(it.why) return it.why; var kind=it.kind||QUIZ.mode; if(kind==='ort') return orthographyTip(it); if(kind==='voc'){ var m=it.q.match(/[«\"]([^»\"]+)[»\"]/); return m?'«'+m[1]+'» se relaciona aquí con «'+it.opts[it.a].toLowerCase()+'».':''; } return ''; }
 function answer(i){ if(!QUIZ||QUIZ.answered) return; var it=QUIZ.items[QUIZ.index]; QUIZ.answered=true;
   DATA.stats.totalAnswered++;
-  var ok=(i===it.a), fb=$("fb");
+  var ok=(i===it.a), fb=$("fb"),why=feedbackWhy(it),tip=why?'<div class="feedback-tip">'+escapeHtml(why)+'</div>':'';
   for(var k=0;k<it.opts.length;k++){ var b=$("opt"+k); if(!b) continue; b.style.pointerEvents='none'; if(k===it.a) b.classList.add('ok'); else if(k===i) b.classList.add('bad'); else b.classList.add('dim'); }
   if(ok){ DATA.stats.totalCorrect++; QUIZ.correct++; QUIZ.streak++; if(QUIZ.streak>DATA.stats.bestStreak) DATA.stats.bestStreak=QUIZ.streak;
-    if(QUIZ.mode==='lec'||(QUIZ.isExam&&it.ctx)) DATA.stats.lec.correct++; else if(QUIZ.mode==='voc') DATA.stats.voc.correct++; else if(QUIZ.mode==='ort') DATA.stats.ort.correct++;
-    fb.className='feedback ok'; fb.textContent=pick(['¡Genial!','¡Correcto!','¡Muy bien!','¡Eres crack!']); sfx('ok'); saveData(); checkAchievements(); setTimeout(nextQ,800);
-  } else { QUIZ.streak=0; QUIZ.wrong.push(it); fb.className='feedback no'; fb.innerHTML='La correcta era <b>'+escapeHtml(it.opts[it.a])+'</b>'; sfx('bad'); saveData(); checkAchievements();
-    var c=$("qcard"); c.innerHTML += '<div style="margin-top:14px"><div class="btn red" onclick="nextQ()">Siguiente ➜</div></div>';
+    var kind=it.kind||QUIZ.mode; if(kind==='lec') DATA.stats.lec.correct++; else if(kind==='voc') DATA.stats.voc.correct++; else if(kind==='ort') DATA.stats.ort.correct++;
+    fb.className='feedback ok'; fb.innerHTML=pick(['¡Genial!','¡Correcto!','¡Muy bien!','¡Eres crack!'])+tip; sfx('ok'); saveData(); checkAchievements(); setTimeout(nextQ,why?1600:900);
+  } else { QUIZ.streak=0; QUIZ.wrong.push(it); fb.className='feedback no'; fb.innerHTML='La correcta es <b>'+escapeHtml(it.opts[it.a])+'</b>'+tip; sfx('bad'); saveData(); checkAchievements();
+    $("qcard").insertAdjacentHTML('beforeend','<div style="margin-top:14px"><div class="btn red" onclick="nextQ()">Lo entiendo · Siguiente ➜</div></div>');
   }
 }
 function nextQ(){ QUIZ.index++; if(QUIZ.index>=QUIZ.count){ finishQuiz(); return; } renderQuiz(); }
 function finishQuiz(){ var score=QUIZ.correct,total=QUIZ.count, stars= score>=total?3: score>=Math.ceil(total*0.7)?2: score>=Math.ceil(total*0.5)?1:0;
-  if(QUIZ.mode==='lec'||QUIZ.mode==='voc'||QUIZ.mode==='ort'){ DATA.stars[QUIZ.mode][QUIZ.level]=Math.max(DATA.stars[QUIZ.mode][QUIZ.level]||0,stars); }
-  if(QUIZ.isExam){ DATA.stats.exams.completed++; if(score===total) DATA.stats.exams.perfect++; }
+  if(!QUIZ.reviewMode&&(QUIZ.mode==='lec'||QUIZ.mode==='voc'||QUIZ.mode==='ort')){ DATA.stars[QUIZ.mode][QUIZ.level]=Math.max(DATA.stars[QUIZ.mode][QUIZ.level]||0,stars); }
+  if(QUIZ.isExam&&!QUIZ.reviewMode){ DATA.stats.exams.completed++; if(score===total) DATA.stats.exams.perfect++; }
   DATA.stats.sessions=(DATA.stats.sessions||0)+1; var hoy=new Date().toISOString().slice(0,10);
   if(DATA.stats.lastDay!==hoy){ DATA.stats.days=(DATA.stats.days||0)+1; DATA.stats.lastDay=hoy; DATA.stats.todayCount=1; } else { DATA.stats.todayCount=(DATA.stats.todayCount||0)+1; }
   saveData(); var nw=checkAchievements(); renderResults(score,total,stars,nw);
@@ -889,10 +1005,12 @@ function renderResults(score,total,stars,nw){ sfx(score>=total?'win':'ok'); if(s
   var color= score>=total?'var(--gold)': score>=total*0.5?'var(--green)':'var(--orange)';
   var med=''; if(nw&&nw.length){ med='<div style="margin:14px 0 4px;font-weight:900">¡Medallas nuevas!</div><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'; nw.forEach(function(a){ med+='<div style="text-align:center;width:90px">'+medalSVG(a.tier,a.icon,false)+'<div style="font-family:var(--pixel);font-weight:700;font-size:9px;margin-top:2px">'+a.name+'</div></div>'; }); med+='</div>'; }
   var rev=''; if(QUIZ.wrong&&QUIZ.wrong.length){ var seen={},items=[]; for(var i=0;i<QUIZ.wrong.length;i++){ var t=fmtWrong(QUIZ.wrong[i]); if(!seen[t]){seen[t]=1;items.push(t);} } var lis=''; for(var j=0;j<items.length;j++) lis+='<div class="review-item">'+items[j]+'</div>'; rev='<div class="review-box"><div class="review-title">Para repasar:</div><div class="review-list">'+lis+'</div></div>'; }
-  var html='<div class="result-card block"><div style="font-family:var(--pixel);font-weight:700;font-size:12px;color:var(--ink-soft)">'+escapeHtml(QUIZ.label)+'</div><div class="big" style="color:'+color+'">'+score+' / '+total+'</div><div class="stars-big">'+starStr(stars)+'</div><div class="result-msg">'+msg+'</div>'+med+rev+'<div class="result-actions" style="margin-top:18px"><div class="btn green" onclick="repeatQuiz()">Repetir</div><div class="btn ghost" onclick="goHome()">Inicio</div></div></div>';
+  var retry=(QUIZ.wrong&&QUIZ.wrong.length)?'<div class="btn purple" onclick="retryWrong()">Repasar mis fallos</div>':'';
+  var html='<div class="result-card block"><div style="font-family:var(--pixel);font-weight:700;font-size:12px;color:var(--ink-soft)">'+escapeHtml(QUIZ.label)+'</div><div class="big" style="color:'+color+'">'+score+' / '+total+'</div><div class="stars-big">'+starStr(stars)+'</div><div class="result-msg">'+msg+'</div>'+med+rev+'<div class="result-actions" style="margin-top:18px">'+retry+'<div class="btn green" onclick="repeatQuiz()">Nueva ronda</div><div class="btn ghost" onclick="goHome()">Inicio</div></div></div>';
   $("screen").innerHTML=html; window.scrollTo(0,0);
 }
-function repeatQuiz(){ startQuiz(QUIZ.mode,QUIZ.level,QUIZ.label,QUIZ.isExam); }
+function retryWrong(){ var seen={},items=[]; for(var i=0;i<QUIZ.wrong.length;i++){ var key=QUIZ.wrong[i].q; if(!seen[key]){seen[key]=1;items.push(QUIZ.wrong[i]);} } shuffle(items); var source=QUIZ.sourceLabel||QUIZ.label; QUIZ={mode:QUIZ.mode,level:QUIZ.level,label:'Repaso · '+source,sourceLabel:source,isExam:false,reviewMode:true,items:items,index:0,correct:0,count:items.length,answered:false,streak:0,wrong:[]}; renderQuiz(); window.scrollTo(0,0); }
+function repeatQuiz(){ startQuiz(QUIZ.mode,QUIZ.level,QUIZ.sourceLabel||QUIZ.label,QUIZ.isExam&&!QUIZ.reviewMode); }
 function renderMedallas(){ var html=backBar("Mis medallas")+'<div class="panel block"><h2>'+unlockedCount()+' / '+ACHIEVEMENTS.length+' conseguidas</h2><p class="sub">Sigue practicando para desbloquearlas todas.</p><div class="medals-grid">';
   for(var i=0;i<ACHIEVEMENTS.length;i++){ var a=ACHIEVEMENTS[i], got=!!DATA.achievements[a.id]; html+='<div class="medal block '+(got?'':'locked')+'">'+medalSVG(a.tier,a.icon,!got)+'<h4>'+a.name+'</h4><p>'+a.desc+'</p></div>'; }
   html+='</div></div>'; $("screen").innerHTML=html; window.scrollTo(0,0);
