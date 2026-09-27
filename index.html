@@ -335,6 +335,7 @@ h2.wtitle b{color:var(--gold);}
 </div>
 <div id="modalHost"></div>
 <div class="toast-wrap" id="toastHost"></div>
+<script src="billing.js"></script>
 <script>
 "use strict";
 var STORE_KEY="lex_v1", memFallback=null;
@@ -955,6 +956,7 @@ function buildItems(mode,level,n,isExam){ var items=[];
   return items;
 }
 function startQuiz(mode,level,label,isExam){ var n=10; var items=buildItems(mode,level,n,isExam);
+  if(!OrbitakidxAccess.requireLevel(level,isExam)) return;
   QUIZ={mode:mode,level:level,label:label,sourceLabel:label,isExam:!!isExam,reviewMode:false,items:items,index:0,correct:0,count:items.length,answered:false,streak:0,wrong:[]};
   renderQuiz(); window.scrollTo(0,0);
 }
@@ -1043,7 +1045,7 @@ function confettiBurst(){ var col=["#ffcf3f","#37c871","#3d9bff","#ff6b5e","#7b5
 document.addEventListener('keydown',function(e){ if(!QUIZ||QUIZ.answered){ if(e.key==="Enter"){ var b=document.querySelector('.btn.red'); if(b) b.click(); } return; } if(/^[1-3]$/.test(e.key)){ answer(parseInt(e.key,10)-1); } });
 
 if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }catch(e){} }
-refreshChip(); updateSoundBtn(); renderHome(); if(!DATA.onboarded) welcome();
+refreshChip(); updateSoundBtn(); renderHome(); if(!DATA.onboarded) welcome(); OrbitakidxAccess.init();
 window.scrollTo(0,0);
 window.addEventListener('load',function(){ window.scrollTo(0,0); });
 </script>
