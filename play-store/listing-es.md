@@ -24,6 +24,7 @@ Cada lectura combina preguntas directas con actividades para ordenar hechos, com
 
 Qué incluye Lex:
 
+- Curso configurable de 1.º a 4.º de Primaria, con especial profundidad en 3.º y 4.º.
 - 48 lecturas repartidas en tres niveles de dificultad.
 - Preguntas de comprensión, inferencia, orden temporal e idea principal.
 - Vocabulario con sinónimos, antónimos y palabras dentro de contexto.
